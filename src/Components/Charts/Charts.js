@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { BarChart } from "../../tools/bar";
 import styles from "./Charts.module.css";
 
@@ -30,13 +30,15 @@ const Charts = () => {
             return Math.floor(Math.random() * (max - min) + min)
         }
         // Create Chart
-        const new_chart = new BarChart(targetId, canvasWidth, canvasHeight , data)
+      
+            const new_chart = new BarChart(targetId, canvasWidth, canvasHeight , data)
+      
 
     }, [])
 
     return (
         <>
-            <div className={styles.Charts} ref={chart}>
+            <div className={styles.Charts} ref={chart} id='chart'>
                 this will be our bar chart
             </div>
         </>
