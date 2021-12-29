@@ -139,6 +139,8 @@ BarChart.prototype.drawChart = function () {
 
     // Vertical Axis
     chart.drawVerticalAxis();
+    // Horizontal Axis
+    chart.drawHorizontalAxis();
 };
 
 
@@ -153,4 +155,19 @@ BarChart.prototype.drawVerticalAxis = function () {
     chart.context.moveTo(chart.horizontalMargin, chart.verticalMargin)
     chart.context.lineTo(chart.horizontalMargin, chart.height - chart.verticalMargin)
     chart.context.stroke()
+}
+
+
+
+BarChart.prototype.drawHorizontalAxis = function () {
+      // Base
+      let chart = this;
+
+      //  Horizontal Axis 
+      chart.context.beginPath();
+      chart.context.strokeStyle = chart.axisColor;
+      chart.context.lineWidth = chart.axisWidth;
+      chart.context.moveTo(chart.horizontalMargin,chart.height - chart.verticalMargin)
+      chart.context.lineTo(chart.width - chart.horizontalMargin, chart.height - chart.verticalMargin)
+      chart.context.stroke()
 }
