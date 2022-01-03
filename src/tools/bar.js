@@ -66,8 +66,8 @@ BarChart.prototype.setChartParameters = function () {
     chart.fontFamily = "times";
     chart.fontWeight = "300";
     chart.fontColor = "#666";
-    chart.verticalFontSixe = (chart.height * chart.fontRatio) / 100;
-    chart.horizontalFontSixe = (chart.width * chart.fontRatio) / 100;
+    chart.verticalFontSize = (chart.height * chart.fontRatio) / 100;
+    chart.horizontalFontSize = (chart.width * chart.fontRatio) / 100;
 
     // GuideLine Configurations
     chart.guideLineColor = "#e5e5e5";
@@ -139,6 +139,10 @@ BarChart.prototype.drawChart = function () {
 
     // Vertical Axis
     chart.drawVerticalAxis();
+
+    // Vertcal Labels
+    chart.drawVerticalLabels();
+
     // Horizontal Axis
     chart.drawHorizontalAxis();
 };
@@ -157,7 +161,23 @@ BarChart.prototype.drawVerticalAxis = function () {
     chart.context.stroke()
 }
 
+BarChart.prototype.drawVerticalLabels = function () {
+    let chart = this;
+    // Text Specifications
+    let labelFont = chart.fontStyle + ' ' + chart.fontWeight + ' ' + chart.verticalFontSize + 'px' + chart.fontFamily;
+    chart.context.font = labelFont;
+    chart.context.fillStyle = chart.fontColor;
 
+    // Draw Labels
+    for(let i = 0; i<= chart.itemsNum; i++){
+        let labelText = chart.vertticalUpper
+
+    }
+
+
+
+
+}
 
 BarChart.prototype.drawHorizontalAxis = function () {
       // Base
