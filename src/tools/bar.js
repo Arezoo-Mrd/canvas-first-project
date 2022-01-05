@@ -24,6 +24,8 @@ export function BarChart(targetId, width, height, data) {
     // Draw Chart
     chart.drawChart();
     console.log("arezoo : ", chart);
+
+
 }
 
 BarChart.prototype.configureChart = function (targetId, width, height, data) {
@@ -33,15 +35,11 @@ BarChart.prototype.configureChart = function (targetId, width, height, data) {
     chart.setCanvasParameters(targetId, width, height, data);
 
     // Global Chart Specifications
-    chart.setChartParameters(targetId, width, height, data);
+    chart.setChartParameters();
 };
 
-BarChart.prototype.setCanvasParameters = function (
-    targetId,
-    width,
-    height,
-    data
-) {
+BarChart.prototype.setCanvasParameters = function (targetId, width, height, data) {
+    
     let chart = this;
 
     chart.id = targetId;
@@ -82,6 +80,9 @@ BarChart.prototype.performPreOperations = function () {
 
     // Get Data
     chart.handleData();
+
+      // Prepare data
+  chart.preapareData();
 };
 
 BarChart.prototype.createCanvas = function () {
@@ -143,8 +144,10 @@ BarChart.prototype.drawChart = function () {
     // Vertcal Labels
     chart.drawVerticalLabels();
 
+
     // Horizontal Axis
     chart.drawHorizontalAxis();
+
 };
 
 
@@ -170,7 +173,12 @@ BarChart.prototype.drawVerticalLabels = function () {
 
     // Draw Labels
     for(let i = 0; i<= chart.itemsNum; i++){
-        let labelText = chart.vertticalUpper
+        let labelText = chart.verticalUpperBound - i * chart.verticalLabelFreq
+        let verticalLabelX = chart.horizontalMargin;
+        let verticalLabelY = chart.verticalMargin + i * chart.verticalLabelFreq
+
+
+        chart.context.fillText(labelText,verticalLabelX, verticalLabelY)
 
     }
 
